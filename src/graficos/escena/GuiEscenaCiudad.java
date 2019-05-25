@@ -15,9 +15,6 @@ import javax.swing.JTextArea;
 import juego.Juego;
 
 public class GuiEscenaCiudad extends Gui{
-    private JLabel labelEscena;
-    private JTextArea areaTexto, areaStats;
-    private JButton btn1, btn2, btn3;
     
     public GuiEscenaCiudad(){
         Juego.j.setState(1);

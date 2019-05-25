@@ -15,9 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class GuiEscenaElfos extends Gui{
-    private JLabel labelEscena;
-    private JTextArea areaTexto, areaStats;
-    private JButton btn1, btn2, btn3;
     
     public GuiEscenaElfos(){
         Juego.j.setState(1);

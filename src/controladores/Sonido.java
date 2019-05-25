@@ -10,7 +10,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sonido{
     private Clip clip;
-    private final String PATH = "/home/gab/NetBeansProjects/RPGame/sfx/";
+    private final String PATH = "./sfx/";
     public boolean estaSonando = false;
     
     public Sonido(){

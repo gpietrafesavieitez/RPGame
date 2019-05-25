@@ -1,14 +1,18 @@
 package graficos;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public abstract class Gui extends JFrame{
     protected final int ANCHO = 800, ALTO = 600;
-    protected final String PATH = "/home/gab/NetBeansProjects/RPGame/img/";
-    protected JPanel panelInferior;
-    protected JLabel labelEscena;
+    protected final String PATH = "./img/";
+    protected JPanel panelSuperior, panelInferior;
+    protected JLabel labelEscena, labelNick, labelVida;
+    protected JTextArea areaTexto, areaStats;
+    protected JButton btn1, btn2, btn3, btn4;
     
     protected void init(){
         try{

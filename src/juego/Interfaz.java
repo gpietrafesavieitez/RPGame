@@ -12,7 +12,7 @@ import graficos.menu.GuiMenuPrincipal;
 
 public class Interfaz{
     public static Gui g;
-    public static Sonido s;
+    public static Sonido s1;
     
     public Interfaz(){
     }
@@ -21,64 +21,64 @@ public class Interfaz{
         switch (tipo) {
             case 0:
                 g = new GuiMenuPrincipal();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 1:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaBosque();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 2:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaElfos();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 3:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaElfos2();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 4:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaCiudad();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 5:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaCiudad2();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 6:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 g = new GuiEscenaSendero();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 7:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 //g = new GuiEscenaJefe();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
             case 8:
                 g.dispose();
-                s.stop();
+                s1.stop();
                 //g = new GuiEscenaHija();
-                s = new Sonido(tipo);
-                s.loop();
+                s1 = new Sonido(tipo);
+                s1.loop();
                 break;
         }
     }

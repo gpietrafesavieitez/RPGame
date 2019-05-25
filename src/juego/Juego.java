@@ -7,11 +7,11 @@ import javax.swing.ImageIcon;
 
 public class Juego{
     public static Conector c;
-    public static Interfaz i;
+    public static Interfaz i; //g y s1
+    public static Sonido s2;
     public static Jugador j;
     public static Enemigo e;
-    public static Sonido s;
-    public static ImageIcon icono;
+    public static ImageIcon avatar;
     
     public void iniciar(){
         c = new Conector();

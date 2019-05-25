@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,10 +14,7 @@ import javax.swing.JTextArea;
 import juego.Juego;
 
 public class GuiEscenaSendero extends Gui{
-    private JLabel labelEscena;
-    private JTextArea areaTexto, areaStats;
-    private JButton btn1;
-    
+
     public GuiEscenaSendero(){
         Juego.j.setState(4);
         Juego.c.guardarPartida(Juego.j);

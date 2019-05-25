@@ -19,14 +19,11 @@ import javax.swing.JTextArea;
 import juego.Interfaz;
 
 public class GuiEscenaElfos2 extends Gui{
-    private JLabel labelEscena;
-    private JTextArea areaTexto, areaStats;
-    private JButton btn1, btn2;
     
     public GuiEscenaElfos2(){
         Juego.j.setState(1);
         Juego.c.guardarPartida(Juego.j);
-        Juego.s = new Sonido();
+        Juego.s2 = new Sonido();
         init();
     }
     
@@ -51,7 +48,7 @@ public class GuiEscenaElfos2 extends Gui{
                     System.exit(0);
                 }
                 if(Juego.e.getHp() <= 0){
-                    Interfaz.s.stop();
+                    Interfaz.s1.stop();
                     labelEscena.setIcon(new ImageIcon(PATH + "scenes\\elfos.gif"));
                     areaTexto.setText("Finalmente consigues encajar un golpe mortal al elfo y éste cae redondo al suelo.\n\nAnte tal situación, los elfos que quedan huyen despavoridos.\n\nDecides registrar al elfo por si lleva algun tipo de objeto o pista que te ayude a encontrar a tu hija y rebuscando entre sus bolsillos te encuentras con una extraña nota...");
                     btn1.setVisible(false);
@@ -60,12 +57,12 @@ public class GuiEscenaElfos2 extends Gui{
                     int randEnemy = rand.nextInt((15 - 0) + 1) + 0; // Daño producido por el enemigo
                     Juego.j.setHp(Juego.j.getHp() - Math.abs(randEnemy - Juego.j.getDef()));
                     int randPlayer = rand.nextInt((10 - 0) + 1) + 0; // Daño producido por el jugador
-                    Juego.s.sfx(randPlayer);
-                    Juego.s.play();
+                    Juego.s2.sfx(randPlayer);
+                    Juego.s2.play();
                     Juego.e.setHp(Juego.e.getHp() - Math.abs(randPlayer * Juego.j.getAtq()));
                     areaStats.setText("Nick: " + Juego.j.getNick() + "\n\nRaza: " + Juego.j.getRaza() + "\n\nVida: " + Juego.j.getHp() + "\n\nAtaque: " + Juego.j.getAtq() + "\n\nDefensa: " + Juego.j.getDef() + "\n\nDEBUG:" + Juego.j.getState());
                     areaTexto.setText("Enemigo: " + Juego.e.getNombre() + "\n\nRaza: " + Juego.e.getRaza() + "\n\nVida: " + Juego.e.getHp());
-                    //areaTexto.setText("El elfo arremete contra ti y te hace " + randEnemy + " punto(s) de daño.\n\nAhora tu atacas al elfo y le causas " + randPlayer + " punto(s) de daño.\n\nLe quedan " + Juego.e.getHp() + " punto(s) de vida.");
+                    //areaTexto.setText("El elfo arremete contra ti y te hace " + randEnemy + " punto(s2) de daño.\n\nAhora tu atacas al elfo y le causas " + randPlayer + " punto(s2) de daño.\n\nLe quedan " + Juego.e.getHp() + " punto(s2) de vida.");
                 }
             }
         });

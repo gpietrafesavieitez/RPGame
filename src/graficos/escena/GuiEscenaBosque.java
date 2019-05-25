@@ -15,10 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class GuiEscenaBosque extends Gui{
-    private JPanel panelSuperior;
-    private JLabel labelEscena, labelNick, labelVida;
-    private JTextArea areaTexto;
-    private JButton btn1, btn2;
     
     public GuiEscenaBosque(){
         Juego.j.setState(1);

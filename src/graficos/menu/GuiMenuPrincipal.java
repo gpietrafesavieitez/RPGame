@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import juego.Juego;
 
 public class GuiMenuPrincipal extends Gui{
-    private JButton btn1, btn2, btn3, btn4;
     
     public GuiMenuPrincipal(){
         init();
@@ -40,10 +39,10 @@ public class GuiMenuPrincipal extends Gui{
                 String raza = (String) JOptionPane.showInputDialog(null, "Escoge tu raza:", "RPGame", 0, new ImageIcon(PATH + "icons/raza.jpg"), new String[]{"Humano", "Elfo", "Orco"}, null);
                 if(handler(raza)){
                     Juego.j = new Jugador(raza);
-                    Juego.icono = new ImageIcon(Juego.j.getIcono());
+                    Juego.avatar = new ImageIcon(Juego.j.getIcono());
                     String nick;
                     do{
-                        nick = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, Juego.icono, null, null);
+                        nick = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, Juego.avatar, null, null);
                         if(nick == null){
                             break;
                         }
@@ -51,7 +50,7 @@ public class GuiMenuPrincipal extends Gui{
                     if(handler(nick)){
                     Juego.j.setNick(nick);
                         if(Juego.c.insertar(nick, raza, Juego.j.getHp()) > 0){
-                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNick() + "\n\nHaz click para comenzar.","RPGame", 0, Juego.icono);
+                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNick() + "\n\nHaz click para comenzar.","RPGame", 0, Juego.avatar);
                             Juego.i.setGui(1);
                         }else{
                             System.out.println("[ error ] No se ha podido insertar.");
@@ -121,7 +120,7 @@ public class GuiMenuPrincipal extends Gui{
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
     }
     
-    public static boolean validar(String nick){
+    public boolean validar(String nick){
         if(nick.matches("^[a-zA-Z]+$") && !(nick.isBlank() && nick.isEmpty())){
             ArrayList<String> lista = Juego.c.consultar("nick");
             for(String n : lista){
