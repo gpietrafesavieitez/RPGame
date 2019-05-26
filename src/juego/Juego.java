@@ -1,11 +1,9 @@
 package juego;
 
-import entidades.Jugador;
-
 public class Juego{
     public static Conector c;
     public static Interfaz i;
-    public static Jugador j;
+    public static entidades.Jugador j;
 
     public void iniciar(){
         c = new Conector();
