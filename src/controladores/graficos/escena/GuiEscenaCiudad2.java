@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +11,7 @@ public class GuiEscenaCiudad2 extends GuiEscena{
     
     public GuiEscenaCiudad2(){
         Juego.j.guardarPartida(3);
-        inicializar();
+        iniciar();
     }
     
     @Override

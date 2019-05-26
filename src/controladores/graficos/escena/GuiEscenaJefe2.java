@@ -1,6 +1,6 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
-import controladores.Audio;
+import controladores.audio.Audio;
 import entidades.Enemigo;
 import juego.Juego;
 import java.awt.event.ActionEvent;
@@ -19,7 +19,7 @@ public class GuiEscenaJefe2 extends GuiEscena{
     Random rand = new Random();
     
     public GuiEscenaJefe2(){
-        inicializar();
+        iniciar();
         sfx.elegirSonido(7);
     }
     
@@ -39,40 +39,40 @@ public class GuiEscenaJefe2 extends GuiEscena{
         
         btn1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
-                if(turno && Juego.j.getHp() > 0 && e.getHp() > 0){
+                if(turno && Juego.j.getVida() > 0 && e.getVida() > 0){
                     int randPlayer = rand.nextInt(20) + 1;
-                    e.setHp(e.getHp() - Math.abs(randPlayer * Juego.j.getAtq()));
-                    sfx.stop();
-                    sfx.play();
-                    if(e.getHp() < 0){
-                        e.setHp(0);
+                    e.setVida(e.getVida() - Math.abs(randPlayer * Juego.j.getAtaque()));
+                    sfx.parar();
+                    sfx.iniciar();
+                    if(e.getVida() < 0){
+                        e.setVida(0);
                     }
-                    areaTexto.setText("Vida restante: " + e.getHp());
+                    areaTexto.setText("Vida restante: " + e.getVida());
                     turno = false;
-                }else if((turno && Juego.j.getHp() <= 0) || (!turno && Juego.j.getHp() <= 0)){
-                    Juego.j.setHp(0);
+                }else if((turno && Juego.j.getVida() <= 0) || (!turno && Juego.j.getVida() <= 0)){
+                    Juego.j.setVida(0);
                     JOptionPane.showMessageDialog(null, "Has muerto.", "RPGame", 1, new ImageIcon(RUTA + "iconos/morir.png"));
-                    Interfaz.cancion.stop();
+                    Interfaz.audio.parar();
                     Interfaz.gui.dispose();
                     Juego.i.setGui(0);
-                }else if((!turno && e.getHp() <= 0) || (turno && e.getHp() <= 0)){
-                    Interfaz.cancion.stop();
-                    Interfaz.cancion.elegirSonido(1);
-                    Interfaz.cancion.loop();
+                }else if((!turno && e.getVida() <= 0) || (turno && e.getVida() <= 0)){
+                    Interfaz.audio.parar();
+                    Interfaz.audio.elegirSonido(1);
+                    Interfaz.audio.bucle();
                     labelEscena.setIcon(new ImageIcon(RUTA + "escenas/jefe.gif"));
                     areaTexto.setText("FALTA REDACTAR ESTO");
                     btn1.setVisible(false);
                     btn2.setVisible(true);
-                }else if(!turno && Juego.j.getHp() > 0 && e.getHp() > 0){
+                }else if(!turno && Juego.j.getVida() > 0 && e.getVida() > 0){
                     int randEnemy = rand.nextInt(20) + 1;
-                    Juego.j.setHp(Juego.j.getHp() - Math.abs(randEnemy / Juego.j.getDef()));
-                    sfx.stop();
-                    sfx.play();
-                    areaTexto.setText("Vida restante: " + e.getHp());
-                    if(Juego.j.getHp() < 0){
-                        Juego.j.setHp(0);
+                    Juego.j.setVida(Juego.j.getVida() - Math.abs(randEnemy / Juego.j.getDefensa()));
+                    sfx.parar();
+                    sfx.iniciar();
+                    areaTexto.setText("Vida restante: " + e.getVida());
+                    if(Juego.j.getVida() < 0){
+                        Juego.j.setVida(0);
                     }
-                    labelVida.setText(""+Juego.j.getHp());
+                    labelVida.setText(""+Juego.j.getVida());
                     turno = true;
                 }
             }
@@ -80,7 +80,7 @@ public class GuiEscenaJefe2 extends GuiEscena{
         
         btn2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
-                Interfaz.cancion.stop();
+                Interfaz.audio.parar();
                 Juego.i.setGui(9);
             }
         });

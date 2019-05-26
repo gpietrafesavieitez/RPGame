@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import juego.Juego;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ public class GuiEscenaBosque extends GuiEscena{
     
     public GuiEscenaBosque(){
         Juego.j.guardarPartida(1);
-        inicializar();
+        iniciar();
     }
     
     @Override

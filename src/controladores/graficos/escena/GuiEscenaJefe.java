@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import juego.Juego;
 import java.awt.event.ActionEvent;
@@ -10,7 +10,7 @@ public class GuiEscenaJefe extends GuiEscena{
     private JButton btn1;
     
     public GuiEscenaJefe(){
-        inicializar();
+        iniciar();
     }
     
     @Override

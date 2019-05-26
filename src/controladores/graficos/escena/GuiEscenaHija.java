@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,7 @@ public class GuiEscenaHija extends GuiEscena{
     
     public GuiEscenaHija(){
         Juego.j.guardarPartida(0);
-        inicializar();
+        iniciar();
     }
     
     @Override
@@ -27,7 +27,7 @@ public class GuiEscenaHija extends GuiEscena{
         btn1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 Interfaz.gui.dispose();
-                Interfaz.cancion.stop();
+                Interfaz.audio.parar();
                 Juego.i.setGui(0);
             }
         });

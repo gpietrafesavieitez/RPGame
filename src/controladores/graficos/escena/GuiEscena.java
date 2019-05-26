@@ -1,6 +1,6 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
-import graficos.Gui;
+import controladores.graficos.Gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -16,7 +16,7 @@ public abstract class GuiEscena extends Gui{
     protected JLabel labelNick, labelVida, labelAtq, labelDef;
     protected JTextArea areaTexto;
     
-    protected void inicializar(){
+    protected void iniciar(){
         try{
             for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
                 if("Nimbus".equals(info.getName())){
@@ -47,26 +47,26 @@ public abstract class GuiEscena extends Gui{
             labelNick = new JLabel();
             labelNick.setFont(new Font("Times New Roman",Font.PLAIN,16));
             labelNick.setIcon(new ImageIcon(RUTA + "iconos/" + Juego.j.getRaza() + "2.png"));
-            labelNick.setText(Juego.j.getNick());
+            labelNick.setText(Juego.j.getNombre());
             labelNick.setBackground(Color.BLACK);
             labelNick.setForeground(Color.YELLOW);
 
             labelVida = new JLabel();
-            labelVida.setText(Juego.j.getHp() + "");
+            labelVida.setText(Juego.j.getVida() + "");
             labelVida.setFont(new Font("Times New Roman",Font.PLAIN,16));
             labelVida.setIcon(new ImageIcon(RUTA + "iconos/vida.png"));
             labelVida.setBackground(Color.BLACK);
             labelVida.setForeground(Color.GREEN);
             
             labelAtq = new JLabel();
-            labelAtq.setText(Juego.j.getAtq() + "");
+            labelAtq.setText(Juego.j.getAtaque() + "");
             labelAtq.setFont(new Font("Times New Roman",Font.PLAIN,16));
             labelAtq.setIcon(new ImageIcon(RUTA + "iconos/ataque.png"));
             labelAtq.setBackground(Color.BLACK);
             labelAtq.setForeground(Color.RED);
             
             labelDef = new JLabel();
-            labelDef.setText(""+Juego.j.getDef() + "");
+            labelDef.setText(""+Juego.j.getDefensa() + "");
             labelDef.setFont(new Font("Times New Roman",Font.PLAIN,16));
             labelDef.setIcon(new ImageIcon(RUTA + "iconos/defensa.png"));
             labelDef.setBackground(Color.BLACK);
@@ -90,6 +90,7 @@ public abstract class GuiEscena extends Gui{
             this.add(panelInferior, BorderLayout.SOUTH);
             this.setTitle("RPGame");
             this.setSize(ANCHO, ALTO);
+            this.setIconImage(new ImageIcon(RUTA + "iconos/icono.png").getImage());
             this.setLocationRelativeTo(null);
             this.pack();
             this.setResizable(false);

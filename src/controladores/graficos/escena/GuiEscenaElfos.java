@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import juego.Juego;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ public class GuiEscenaElfos extends GuiEscena{
     private JButton btn1, btn2, btn3;
     
     public GuiEscenaElfos(){
-        inicializar();
+        iniciar();
     }
     
     @Override

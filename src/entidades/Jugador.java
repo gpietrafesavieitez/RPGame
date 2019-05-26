@@ -3,47 +3,31 @@ package entidades;
 import juego.Juego;
 
 public class Jugador extends Personaje{
-    private String nombre, raza, icono;
-    private int atq, def, state;
+    private String icono;
+    private int ataque, defensa, estadio;
     
     public Jugador(){}
 
     public Jugador(String raza){
         this.raza = raza;
         this.icono = "img/iconos/" + this.raza + ".png";
-        setStats();
+        setEstadisticas();
     }
     
-    public void setStats(){
+    public void setEstadisticas(){
         if(raza.equals("Humano")){
-            hp = 100;
-            atq = 1;
-            def = 3;
+            vida = 100;
+            ataque = 1;
+            defensa = 3;
         }else if(raza.equals("Elfo")){
-            hp = 120;
-            atq = 2;
-            def = 1;
+            vida = 120;
+            ataque = 2;
+            defensa = 1;
         }else{
-            hp = 80;
-            atq = 3;
-            def = 2;
+            vida = 80;
+            ataque = 3;
+            defensa = 2;
         }
-    }
-
-    public String getNick(){
-        return nombre;
-    }
-
-    public void setNick(String nick){
-        this.nombre = nick;
-    }
-
-    public String getRaza(){
-        return raza;
-    }
-
-    public void setRaza(String raza){
-        this.raza = raza;
     }
 
     public String getIcono(){
@@ -54,28 +38,44 @@ public class Jugador extends Personaje{
         this.icono = icono;
     }
 
-    public int getState(){
-        return state;
+    public int getEstadio(){
+        return estadio;
     }
 
-    public void setState(int state){
-        this.state = state;
+    public void setEstadio(int estadio){
+        this.estadio = estadio;
     }
 
-    public int getAtq() {
-        return atq;
+    public int getAtaque() {
+        return ataque;
     }
 
-    public int getDef() {
-        return def;
+    public int getDefensa() {
+        return defensa;
     }
     
-    public void guardarPartida(int state){
-        setState(state);
+    public void guardarPartida(int estadio){
+        setEstadio(estadio);
         Juego.c.guardarJugador(this);
     }
     
     public void cargarPartida(){
-        Juego.c.guardarJugador(this);
+        switch(estadio){
+            case 0: // menu
+                Juego.i.setGui(1);
+            break;
+            case 1: // bosque//ciudad//elfos
+                Juego.i.setGui(1);
+            break;
+            case 2: // elfos derrotados
+                Juego.i.setGui(3);
+            break;
+            case 3: // ciudad traspasada
+                Juego.i.setGui(5);
+            break;
+            case 4: // en al sendero
+                Juego.i.setGui(6);
+            break;
+        }
     }
 }

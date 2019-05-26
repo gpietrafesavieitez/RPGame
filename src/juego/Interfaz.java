@@ -1,13 +1,13 @@
 package juego;
 
-import controladores.Audio;
-import graficos.Gui;
-import graficos.escena.*;
-import graficos.menu.GuiMenuPrincipal;
+import controladores.audio.Audio;
+import controladores.graficos.Gui;
+import controladores.graficos.escena.*;
+import controladores.graficos.menu.GuiMenuPrincipal;
 
 public class Interfaz{
     public static Gui gui;
-    public static Audio cancion;
+    public static Audio audio;
     
     public Interfaz(){}
     
@@ -15,71 +15,71 @@ public class Interfaz{
         switch (tipo) {
             case 0:
                 gui = new GuiMenuPrincipal();
-                cancion = new Audio(0);
-                cancion.loop();
+                audio = new Audio(0);
+                audio.bucle();
                 break;
             case 1:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaBosque();
-                cancion = new Audio(1);
-                cancion.loop();
+                audio = new Audio(1);
+                audio.bucle();
                 break;
             case 2:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaElfos();
-                cancion = new Audio(1);
-                cancion.loop();
+                audio = new Audio(1);
+                audio.bucle();
                 break;
             case 3:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaElfos2();
-                cancion = new Audio(2);
-                cancion.loop();
+                audio = new Audio(2);
+                audio.bucle();
                 break;
             case 4:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaCiudad();
-                cancion = new Audio(3);
-                cancion.loop();
+                audio = new Audio(3);
+                audio.bucle();
                 break;
             case 5:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaCiudad2();
-                cancion = new Audio(4);
-                cancion.loop();
+                audio = new Audio(4);
+                audio.bucle();
                 break;
             case 6:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaSendero();
-                cancion = new Audio(6);
-                cancion.loop();
+                audio = new Audio(6);
+                audio.bucle();
                 break;
             case 7:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaJefe();
-                cancion = new Audio(6);
-                cancion.loop();
+                audio = new Audio(6);
+                audio.bucle();
                 break;
             case 8:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaJefe2();
-                cancion = new Audio(2);
-                cancion.loop();
+                audio = new Audio(2);
+                audio.bucle();
                 break;
             case 9:
                 gui.dispose();
-                cancion.stop();
+                audio.parar();
                 gui = new GuiEscenaHija();
-                cancion = new Audio(5);
-                cancion.loop();
+                audio = new Audio(5);
+                audio.bucle();
                 break;
         }
     }

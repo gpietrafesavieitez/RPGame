@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +11,7 @@ public class GuiEscenaSendero extends GuiEscena{
     
     public GuiEscenaSendero(){
         Juego.j.guardarPartida(4);
-        inicializar();
+        iniciar();
     }
     
     @Override

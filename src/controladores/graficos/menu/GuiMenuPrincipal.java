@@ -1,4 +1,4 @@
-package graficos.menu;
+package controladores.graficos.menu;
 
 import entidades.Jugador;
 import java.awt.FlowLayout;
@@ -15,7 +15,7 @@ public class GuiMenuPrincipal extends GuiMenu{
     private JButton btn1, btn2, btn3, btn4;
     
     public GuiMenuPrincipal(){
-        inicializar();
+        iniciar();
     }
     
     @Override
@@ -45,9 +45,9 @@ public class GuiMenuPrincipal extends GuiMenu{
                         }
                     }while(!validar(nick));
                     if(handler(nick)){
-                    Juego.j.setNick(nick);
-                        if(Juego.c.insertar(nick, raza, Juego.j.getHp()) > 0){
-                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNick() + "\n\nHaz click para comenzar.","RPGame", 0, new ImageIcon(Juego.j.getIcono()));
+                    Juego.j.setNombre(nick);
+                        if(Juego.c.insertar(nick, raza, Juego.j.getVida()) > 0){
+                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNombre() + "\n\nHaz click para comenzar.","RPGame", 0, new ImageIcon(Juego.j.getIcono()));
                             Juego.i.setGui(1);
                         }else{
                             System.out.println("[ error ] No se ha podido insertar.");
@@ -59,28 +59,12 @@ public class GuiMenuPrincipal extends GuiMenu{
         
         btn2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
-                Object[] jugadores = Juego.c.consultar("nick").toArray();
+                Object[] jugadores = Juego.c.consultar("nombre").toArray();
                 if(jugadores.length > 0){
                     String nick = (String) JOptionPane.showInputDialog(null, "Selecciona tu personaje:", "RPGame", 0, new ImageIcon(RUTA + "iconos/cargar.png"), jugadores, null);
                     if(handler(nick)){
                         Juego.j = Juego.c.cargarJugador(nick);
-                        switch(Juego.j.getState()){
-                            case 0: // menu
-                                Juego.i.setGui(1);
-                                break;
-                            case 1: // bosque//ciudad//elfos
-                                Juego.i.setGui(1);
-                                break;
-                            case 2: // elfos derrotados
-                                Juego.i.setGui(3);
-                                break;
-                            case 3: // ciudad traspasada
-                                Juego.i.setGui(5);
-                                break;
-                            case 4: // en al sendero
-                                Juego.i.setGui(6);
-                                break;
-                        }
+                        Juego.j.cargarPartida();
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "No hay datos guardados, crea una nueva partida.", "RPGame", 2);
@@ -90,7 +74,7 @@ public class GuiMenuPrincipal extends GuiMenu{
         
         btn3.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
-                JOptionPane.showMessageDialog(null, "Créditos:\n- Autor: Gabriel P.\n- Versión: 2.0.0a", "RPGame", 1);
+                JOptionPane.showMessageDialog(null, "Créditos:\n- Autor: Gabriel P.\n- Versión: 2.0.0", "RPGame", 1);
             }
         });
         
@@ -103,7 +87,7 @@ public class GuiMenuPrincipal extends GuiMenu{
     
     public boolean validar(String nick){
         if(nick.matches("^[a-zA-Z]+$") && !(nick.isBlank() && nick.isEmpty()) && nick.length() < 10){
-            ArrayList<String> lista = Juego.c.consultar("nick");
+            ArrayList<String> lista = Juego.c.consultar("nombre");
             for(String n : lista){
                 if(n.equals(nick)){
                     JOptionPane.showMessageDialog(null, "Ya existe ese nombre, elige otro.", "RPGame", 2);

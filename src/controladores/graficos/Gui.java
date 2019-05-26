@@ -1,4 +1,4 @@
-package graficos;
+package controladores.graficos;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

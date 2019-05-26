@@ -1,4 +1,4 @@
-package graficos.escena;
+package controladores.graficos.escena;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,7 @@ public class GuiEscenaCiudad extends GuiEscena{
     public static boolean flagIntento = false;
     
     public GuiEscenaCiudad(){
-        inicializar();
+        iniciar();
     }
     
     @Override

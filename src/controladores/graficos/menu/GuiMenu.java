@@ -1,13 +1,14 @@
-package graficos.menu;
+package controladores.graficos.menu;
 
-import graficos.Gui;
+
+import controladores.graficos.Gui;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public abstract class GuiMenu extends Gui{
 
-    protected void inicializar(){
+    protected void iniciar(){
         try{
             for(javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
                 if("Nimbus".equals(info.getName())){
@@ -27,6 +28,7 @@ public abstract class GuiMenu extends Gui{
     @Override
     protected void construirPanelInferior(){}
     
+    @Override
     protected void construirVentana(){
         labelEscena = new JLabel();
         labelEscena.setIcon(new ImageIcon(RUTA + "escenas/menu.gif"));
@@ -35,6 +37,7 @@ public abstract class GuiMenu extends Gui{
         this.add(panelInferior, BorderLayout.SOUTH);
         this.setTitle("RPGame");
         this.setSize(ANCHO, ALTO);
+        this.setIconImage(new ImageIcon(RUTA + "iconos/icono.png").getImage());
         this.setLocationRelativeTo(null);
         this.pack();
         this.setResizable(false);
