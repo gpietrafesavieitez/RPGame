@@ -1,6 +1,5 @@
 package controladores.graficos.menu;
 
-
 import controladores.graficos.Gui;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
