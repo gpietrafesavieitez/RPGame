@@ -21,33 +21,33 @@ public class Audio{
     public void elegirSonido(int tipo){
         switch(tipo){
             case 0:
-                setArchivo("menu.wav");
+                setAudio("menu.wav");
             break;
             case 1:
-                setArchivo("lluvia.wav");
+                setAudio("lluvia.wav");
             break;
             case 2:
-                setArchivo("batalla.wav");
+                setAudio("batalla.wav");
             break;
             case 3:
-                setArchivo("ciudad.wav");
+                setAudio("ciudad.wav");
             break;
             case 4:
-                setArchivo("cueva.wav");
+                setAudio("cueva.wav");
             break;
             case 5:
-                setArchivo("fin.wav");
+                setAudio("fin.wav");
             break;
             case 6:
-                setArchivo("siniestro.wav");
+                setAudio("siniestro.wav");
             break;
             case 7:
-                setArchivo("golpe.wav");
+                setAudio("golpe.wav");
             break;
         }
     }
     
-    private void setArchivo(String name){
+    private void setAudio(String name){
         try{
             AudioInputStream sound = AudioSystem.getAudioInputStream(new File(RUTA + name));
             audio = AudioSystem.getClip();

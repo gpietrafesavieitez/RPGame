@@ -17,7 +17,7 @@ public class GuiEscenaHija extends GuiEscena{
     
     @Override
     protected void construirVentana(){
-        labelEscena.setIcon(new ImageIcon(RUTA + "escenas/hija2.gif"));
+        labelEscena.setIcon(new ImageIcon(RUTA + "escenas/hija.gif"));
         areaTexto.setText("¡Felicidades, lo has conseguido!\n\nHas rescatado a tu hija, ahora está sana y salva.\n\nHaz click para empezar una nueva partida.");
     }
 

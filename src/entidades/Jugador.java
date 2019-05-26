@@ -10,7 +10,7 @@ public class Jugador extends Personaje{
 
     public Jugador(String raza){
         this.raza = raza;
-        this.icono = "img/iconos/" + this.raza + ".png";
+        this.icono = RUTA + this.raza + ".png";
         setEstadisticas();
     }
     
@@ -46,7 +46,7 @@ public class Jugador extends Personaje{
         this.estadio = estadio;
     }
 
-    public int getAtaque() {
+    public int getAtaque(){
         return ataque;
     }
 
@@ -55,25 +55,25 @@ public class Jugador extends Personaje{
     }
     
     public void guardarPartida(int estadio){
-        setEstadio(estadio);
+        this.estadio = estadio;
         Juego.c.guardarJugador(this);
     }
     
     public void cargarPartida(){
         switch(estadio){
-            case 0: // menu
+            case 0:
                 Juego.i.setGui(1);
             break;
-            case 1: // bosque//ciudad//elfos
+            case 1:
                 Juego.i.setGui(1);
             break;
-            case 2: // elfos derrotados
+            case 2:
                 Juego.i.setGui(3);
             break;
-            case 3: // ciudad traspasada
+            case 3:
                 Juego.i.setGui(5);
             break;
-            case 4: // en al sendero
+            case 4:
                 Juego.i.setGui(6);
             break;
         }
