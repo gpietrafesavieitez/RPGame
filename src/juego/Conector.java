@@ -46,16 +46,7 @@ public class Conector{
         }
     }
     
-    public int modificar(Object colID, Object colNombre, Object colApellido){
-        try{
-            PreparedStatement st = conn.prepareStatement("UPDATE alumnos SET Nombre='" + colNombre + "',Apellido='" + colApellido + "' WHERE ID=" + colID);
-            return st.executeUpdate();
-        }catch(SQLException e){
-            return -1;
-        }
-    }
-    
-    public Jugador cargar(String nick){
+    public Jugador cargarJugador(String nick){
         Jugador j;
         try{
             PreparedStatement st = conn.prepareStatement("SELECT * FROM jugadores WHERE nick = '" + nick + "'");
@@ -75,7 +66,7 @@ public class Conector{
         }
     }
     
-    public int guardarPartida(Jugador j){
+    public int guardarJugador(Jugador j){
         try{
             PreparedStatement st = conn.prepareStatement("UPDATE jugadores SET hp=" + j.getHp() + ",state=" + j.getState() + " WHERE nick='" + j.getNick() + "'");
             return st.executeUpdate();

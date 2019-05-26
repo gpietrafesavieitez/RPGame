@@ -1,23 +1,21 @@
 package graficos.menu;
 
 import entidades.Jugador;
-import graficos.Gui;
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import juego.Juego;
 
-public class GuiMenuPrincipal extends Gui{
+public class GuiMenuPrincipal extends GuiMenu{
+    private JButton btn1, btn2, btn3, btn4;
     
     public GuiMenuPrincipal(){
-        init();
+        inicializar();
     }
     
     @Override
@@ -36,13 +34,12 @@ public class GuiMenuPrincipal extends Gui{
 
         btn1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
-                String raza = (String) JOptionPane.showInputDialog(null, "Escoge tu raza:", "RPGame", 0, new ImageIcon(PATH + "icons/raza.jpg"), new String[]{"Humano", "Elfo", "Orco"}, null);
+                String raza = (String) JOptionPane.showInputDialog(null, "Escoge tu raza:", "RPGame", 0, new ImageIcon(RUTA + "iconos/raza.png"), new String[]{"Humano", "Elfo", "Orco"}, null);
                 if(handler(raza)){
                     Juego.j = new Jugador(raza);
-                    Juego.avatar = new ImageIcon(Juego.j.getIcono());
                     String nick;
                     do{
-                        nick = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, Juego.avatar, null, null);
+                        nick = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, new ImageIcon(Juego.j.getIcono()), null, null);
                         if(nick == null){
                             break;
                         }
@@ -50,7 +47,7 @@ public class GuiMenuPrincipal extends Gui{
                     if(handler(nick)){
                     Juego.j.setNick(nick);
                         if(Juego.c.insertar(nick, raza, Juego.j.getHp()) > 0){
-                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNick() + "\n\nHaz click para comenzar.","RPGame", 0, Juego.avatar);
+                            JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNick() + "\n\nHaz click para comenzar.","RPGame", 0, new ImageIcon(Juego.j.getIcono()));
                             Juego.i.setGui(1);
                         }else{
                             System.out.println("[ error ] No se ha podido insertar.");
@@ -64,9 +61,9 @@ public class GuiMenuPrincipal extends Gui{
             public void actionPerformed(ActionEvent evt){
                 Object[] jugadores = Juego.c.consultar("nick").toArray();
                 if(jugadores.length > 0){
-                    String nick = (String) JOptionPane.showInputDialog(null, "Selecciona tu personaje:", "RPGame", 0, new ImageIcon(PATH + "icons/cargar.jpg"), jugadores, null);
+                    String nick = (String) JOptionPane.showInputDialog(null, "Selecciona tu personaje:", "RPGame", 0, new ImageIcon(RUTA + "iconos/cargar.png"), jugadores, null);
                     if(handler(nick)){
-                        Juego.j = Juego.c.cargar(nick);
+                        Juego.j = Juego.c.cargarJugador(nick);
                         switch(Juego.j.getState()){
                             case 0: // menu
                                 Juego.i.setGui(1);
@@ -103,25 +100,9 @@ public class GuiMenuPrincipal extends Gui{
             }
         });
     }
-
-    @Override
-    protected void construirVentana(){
-        labelEscena = new JLabel();
-        labelEscena.setIcon(new ImageIcon(PATH + "scenes/menu.gif"));
-        this.setLayout(new BorderLayout());
-        this.add(labelEscena, BorderLayout.CENTER);
-        this.add(panelInferior, BorderLayout.SOUTH);
-        this.setTitle("RPGame");
-        this.setSize(ANCHO, ALTO);
-        this.setLocationRelativeTo(null);
-        this.pack();
-        this.setResizable(false);
-        this.setVisible(true);
-        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-    }
     
     public boolean validar(String nick){
-        if(nick.matches("^[a-zA-Z]+$") && !(nick.isBlank() && nick.isEmpty())){
+        if(nick.matches("^[a-zA-Z]+$") && !(nick.isBlank() && nick.isEmpty()) && nick.length() < 10){
             ArrayList<String> lista = Juego.c.consultar("nick");
             for(String n : lista){
                 if(n.equals(nick)){

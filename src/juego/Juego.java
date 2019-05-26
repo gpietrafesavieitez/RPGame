@@ -1,18 +1,12 @@
 package juego;
 
-import controladores.Sonido;
-import entidades.Enemigo;
 import entidades.Jugador;
-import javax.swing.ImageIcon;
 
 public class Juego{
     public static Conector c;
-    public static Interfaz i; //g y s1
-    public static Sonido s2;
+    public static Interfaz i;
     public static Jugador j;
-    public static Enemigo e;
-    public static ImageIcon avatar;
-    
+
     public void iniciar(){
         c = new Conector();
         if(c.conectar()){

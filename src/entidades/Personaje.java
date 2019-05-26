@@ -10,6 +10,4 @@ public abstract class Personaje{
     public void setHp(int hp){
         this.hp = hp;
     }
-    
-    abstract void morir();
 }

@@ -1,15 +1,16 @@
 package entidades;
 
+import juego.Juego;
+
 public class Jugador extends Personaje{
-    private String nick, raza, icono;
+    private String nombre, raza, icono;
     private int atq, def, state;
     
-    public Jugador(){
-    }
+    public Jugador(){}
 
     public Jugador(String raza){
         this.raza = raza;
-        this.icono = "img/icons/" + this.raza + ".jpg";
+        this.icono = "img/iconos/" + this.raza + ".png";
         setStats();
     }
     
@@ -19,7 +20,7 @@ public class Jugador extends Personaje{
             atq = 1;
             def = 3;
         }else if(raza.equals("Elfo")){
-            hp = 200;
+            hp = 120;
             atq = 2;
             def = 1;
         }else{
@@ -30,11 +31,11 @@ public class Jugador extends Personaje{
     }
 
     public String getNick(){
-        return nick;
+        return nombre;
     }
 
     public void setNick(String nick){
-        this.nick = nick;
+        this.nombre = nick;
     }
 
     public String getRaza(){
@@ -65,20 +66,16 @@ public class Jugador extends Personaje{
         return atq;
     }
 
-    public void setAtq(int atq) {
-        this.atq = atq;
-    }
-
     public int getDef() {
         return def;
     }
-
-    public void setDef(int def) {
-        this.def = def;
+    
+    public void guardarPartida(int state){
+        setState(state);
+        Juego.c.guardarJugador(this);
     }
-
-    @Override
-    void morir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public void cargarPartida(){
+        Juego.c.guardarJugador(this);
     }
 }
