@@ -16,7 +16,7 @@ public class Conector{
     
     public boolean conectar(){
         try{
-            con = DriverManager.getConnection("jdbc:sqlite:juego.db");
+            con = DriverManager.getConnection("jdbc:sqlite:./lib/juego.db");
             return true;
         }catch(SQLException sqle){
             sqle.printStackTrace();
