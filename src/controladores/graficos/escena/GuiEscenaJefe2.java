@@ -60,7 +60,7 @@ public class GuiEscenaJefe2 extends GuiEscena{
                     Interfaz.audio.elegirSonido(1);
                     Interfaz.audio.bucle();
                     labelEscena.setIcon(new ImageIcon(RUTA + "escenas/jefe.gif"));
-                    areaTexto.setText("FALTA REDACTAR ESTO");
+                    areaTexto.setText("Finalmente consigues encajar un golpe certero aprovechando un descuido del enemigo y éste cae al suelo derrotado.\n\nHas vencido.");
                     btn1.setVisible(false);
                     btn2.setVisible(true);
                 }else if(!turno && Juego.j.getVida() > 0 && e.getVida() > 0){

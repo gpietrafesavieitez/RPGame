@@ -43,7 +43,7 @@ public class GuiEscenaCiudad extends GuiEscena{
             public void actionPerformed(ActionEvent evt){
                 Random rand = new Random();
                 int randPlayer = rand.nextInt((100 - 0) + 1) + 0;
-                if(randPlayer > 80){
+                if(randPlayer > 70){
                     Juego.i.setGui(5);
                 }else{
                     flagIntento = true;
