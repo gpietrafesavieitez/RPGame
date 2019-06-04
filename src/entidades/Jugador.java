@@ -54,11 +54,6 @@ public class Jugador extends Personaje{
         return defensa;
     }
     
-    public void guardarPartida(int estadio){
-        this.estadio = estadio;
-        Juego.c.guardarJugador(this);
-    }
-    
     public void cargarPartida(){
         switch(estadio){
             case 0:
@@ -77,5 +72,10 @@ public class Jugador extends Personaje{
                 Juego.i.setGui(6);
             break;
         }
+    }
+    
+    public void guardarPartida(int estadio){
+        this.estadio = estadio;
+        Juego.c.guardarJugador(this);
     }
 }

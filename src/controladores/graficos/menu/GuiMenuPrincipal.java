@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import juego.Juego;
+import extras.Utiles;
 
 public class GuiMenuPrincipal extends GuiMenu{
     private JButton btn1, btn2, btn3, btn4;
@@ -35,18 +36,18 @@ public class GuiMenuPrincipal extends GuiMenu{
         btn1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent evt){
                 String raza = (String) JOptionPane.showInputDialog(null, "Escoge tu raza:", "RPGame", 0, new ImageIcon(RUTA + "iconos/raza.png"), new String[]{"Humano", "Elfo", "Orco"}, null);
-                if(handler(raza)){
+                if(Utiles.handler(raza)){
                     Juego.j = new Jugador(raza);
-                    String nick;
+                    String nombre;
                     do{
-                        nick = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, new ImageIcon(Juego.j.getIcono()), null, null);
-                        if(nick == null){
+                        nombre = (String) JOptionPane.showInputDialog(null, "Has seleccionado: '" + raza + "'.\n\nDale un nombre a tu personaje:", "RPGame", 0, new ImageIcon(Juego.j.getIcono()), null, null);
+                        if(nombre == null){
                             break;
                         }
-                    }while(!validar(nick));
-                    if(handler(nick)){
-                    Juego.j.setNombre(nick);
-                        if(Juego.c.insertar(nick, raza, Juego.j.getVida()) > 0){
+                    }while(!comprobar(nombre));
+                    if(Utiles.handler(nombre)){
+                    Juego.j.setNombre(nombre);
+                        if(Juego.c.insertar(nombre, raza, Juego.j.getVida()) > 0){
                             JOptionPane.showMessageDialog(null, "Te damos la bienvenida: " + Juego.j.getNombre() + "\n\nHaz click para comenzar.","RPGame", 0, new ImageIcon(Juego.j.getIcono()));
                             Juego.i.setGui(1);
                         }else{
@@ -61,9 +62,9 @@ public class GuiMenuPrincipal extends GuiMenu{
             public void actionPerformed(ActionEvent evt){
                 Object[] jugadores = Juego.c.consultar("nombre").toArray();
                 if(jugadores.length > 0){
-                    String nick = (String) JOptionPane.showInputDialog(null, "Selecciona tu personaje:", "RPGame", 0, new ImageIcon(RUTA + "iconos/cargar.png"), jugadores, null);
-                    if(handler(nick)){
-                        Juego.j = Juego.c.cargarJugador(nick);
+                    String nombre = (String) JOptionPane.showInputDialog(null, "Selecciona tu personaje:", "RPGame", 0, new ImageIcon(RUTA + "iconos/cargar.png"), jugadores, null);
+                    if(Utiles.handler(nombre)){
+                        Juego.j = Juego.c.cargarJugador(nombre);
                         Juego.j.cargarPartida();
                     }
                 }else{
@@ -85,26 +86,18 @@ public class GuiMenuPrincipal extends GuiMenu{
         });
     }
     
-    public boolean validar(String nick){
-        if(nick.matches("^[a-zA-Z]+$") && !(nick.isBlank() && nick.isEmpty()) && nick.length() < 10){
+    public boolean comprobar(String nombre){
+        if(Utiles.validar(nombre)){
             ArrayList<String> lista = Juego.c.consultar("nombre");
             for(String n : lista){
-                if(n.equals(nick)){
+                if(n.equals(nombre)){
                     JOptionPane.showMessageDialog(null, "Ya existe ese nombre, elige otro.", "RPGame", 2);
                     return false;
                 }
             }
             return true;
         }else{
-            JOptionPane.showMessageDialog(null, "Introduce un nick válido.", "RPGame", 2);
-            return false;
-        }
-    }
-    
-    public boolean handler(String str){
-        if((str != null) && (str.length() > 0)){
-            return true;
-        }else{
+            JOptionPane.showMessageDialog(null, "Introduce un nombre válido.", "RPGame", 2);
             return false;
         }
     }

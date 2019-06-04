@@ -13,7 +13,7 @@ import juego.Juego;
 
 public abstract class GuiEscena extends Gui{
     protected JPanel panelSuperior;
-    protected JLabel labelNick, labelVida, labelAtq, labelDef;
+    protected JLabel labelNombre, labelVida, labelAtq, labelDef;
     protected JTextArea areaTexto;
     
     protected void iniciar(){
@@ -44,12 +44,12 @@ public abstract class GuiEscena extends Gui{
             areaTexto.setBackground(Color.BLACK);
             areaTexto.setForeground(Color.WHITE);
 
-            labelNick = new JLabel();
-            labelNick.setFont(new Font("Times New Roman",Font.PLAIN,16));
-            labelNick.setIcon(new ImageIcon(RUTA + "iconos/" + Juego.j.getRaza() + "2.png"));
-            labelNick.setText(Juego.j.getNombre());
-            labelNick.setBackground(Color.BLACK);
-            labelNick.setForeground(Color.YELLOW);
+            labelNombre = new JLabel();
+            labelNombre.setFont(new Font("Times New Roman",Font.PLAIN,16));
+            labelNombre.setIcon(new ImageIcon(RUTA + "iconos/" + Juego.j.getRaza() + "2.png"));
+            labelNombre.setText(Juego.j.getNombre());
+            labelNombre.setBackground(Color.BLACK);
+            labelNombre.setForeground(Color.YELLOW);
 
             labelVida = new JLabel();
             labelVida.setText(Juego.j.getVida() + "");
@@ -75,7 +75,7 @@ public abstract class GuiEscena extends Gui{
             panelSuperior = new JPanel();
             panelSuperior.setLayout(new FlowLayout((FlowLayout.CENTER)));
             panelSuperior.setBackground(Color.BLACK);
-            panelSuperior.add(labelNick);
+            panelSuperior.add(labelNombre);
             panelSuperior.add(labelAtq);
             panelSuperior.add(labelDef);
             panelSuperior.add(labelVida);
